@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* TEXT */
+h3{ 
+    @apply text-xl font-bold;
+}
+
+/* BUTTON */
+.signin-button {
+    @apply py-2 px-16 border-[1px] bg-neutral-50 flex items-center justify-center gap-2 rounded-[6px] text-sm font-semibold text-neutral-800;
+}
