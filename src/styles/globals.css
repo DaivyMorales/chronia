@@ -8,7 +8,23 @@ h3{
     @apply text-xl font-bold;
 }
 
+h4 {
+    @apply text-sm font-bold;
+}
+
+p{
+    @apply text-[13px] font-medium; 
+}
 /* BUTTON */
 .signin-button {
     @apply py-2 px-16 border-[1px] bg-neutral-50 flex items-center justify-center gap-2 rounded-[6px] text-sm font-semibold text-neutral-800;
+}
+
+.next-button {
+    @apply bg-black;
+}
+
+/* INPUT */
+.question-input {
+    @apply w-[363px] bg-transparent rounded-lg border-[1px] px-4 py-2 text-sm;
 }

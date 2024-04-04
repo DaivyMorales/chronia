@@ -44,7 +44,11 @@ export const authOptions: NextAuthOptions = {
       return true;
     },
     async redirect({ url, baseUrl }) {
-      return Promise.resolve("/");
+      if (url === "signout") {
+        return Promise.resolve("/auth/signin");
+      } else {
+        return Promise.resolve("/");
+      }
     },
     session: ({ session, user }) => ({
       ...session,
