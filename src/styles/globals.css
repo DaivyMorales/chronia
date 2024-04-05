@@ -3,7 +3,16 @@
 @tailwind utilities;
 
 
+:root {
+    background-color: black;
+    color: white;
+}
+
 /* TEXT */
+h2 {
+    @apply text-3xl font-medium;
+}
+
 h3{ 
     @apply text-xl font-bold;
 }
@@ -21,10 +30,31 @@ p{
 }
 
 .next-button {
-    @apply bg-black;
+    @apply bg-neutral-600 text-white font-medium text-[12px] px-3 py-[5px] border-[1px] border-neutral-400 rounded-[10px] flex gap-2 items-center justify-center;
 }
 
 /* INPUT */
-.question-input {
-    @apply w-[363px] bg-transparent rounded-lg border-[1px] px-4 py-2 text-sm;
+
+
+
+
+textarea:focus {
+    outline: none;
 }
+/* .question-textarea {
+    @apply ;
+} */
+
+/*
+
+
+
+{
+    area: physic,
+    questions: [
+        "Am i more confident?",
+        ""
+    ]
+}
+
+*/
