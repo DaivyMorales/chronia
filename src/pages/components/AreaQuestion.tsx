@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import InputQuestion from "./InputQuestion";
 import { HiPlus } from "react-icons/hi";
+import { useFormik } from "formik";
 import {
   TiHeartOutline,
   TiGroupOutline,
@@ -29,6 +30,7 @@ function AreaQuestion({ name, id }: AreaQuestionProps) {
     },
   ]);
 
+
   const emojiArea = () => {
     switch (name) {
       case "Love / Relationships":
@@ -37,7 +39,7 @@ function AreaQuestion({ name, id }: AreaQuestionProps) {
       case "Spirituality":
         return <TiFeather size={30} />;
         break;
-      case "Social life / interactions":
+      case "Social life / Interactions":
         return <TiGroupOutline size={30} />;
         break;
       case "Health":
@@ -46,7 +48,7 @@ function AreaQuestion({ name, id }: AreaQuestionProps) {
       case "Hobbies":
         return <TiNotesOutline size={30} />;
         break;
-      case "Personal growth and development":
+      case "Personal growth / Development":
         return <TiChartLineOutline size={30} />;
         break;
 
@@ -63,7 +65,7 @@ function AreaQuestion({ name, id }: AreaQuestionProps) {
       case "Spirituality":
         return "bg-gradient-to-r from-cyan-600 to-green-700";
         break;
-      case "Social life / interactions":
+      case "Social life / Interactions":
         return "bg-gradient-to-r from-sky-600 to-blue-700";
         break;
       case "Health":
@@ -72,7 +74,7 @@ function AreaQuestion({ name, id }: AreaQuestionProps) {
       case "Hobbies":
         return "bg-gradient-to-r from-indigo-600 to-red-700";
         break;
-      case "Personal growth and development":
+      case "Personal growth / Development":
         return "bg-gradient-to-r from-stone-600 to-neutral-700";
         break;
 
@@ -82,10 +84,10 @@ function AreaQuestion({ name, id }: AreaQuestionProps) {
   };
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6 }}
-      className="b] z-50  flex flex-col items-start justify-start gap-4 rounded-xl border-neutral-200 border-neutral-900  p-9 "
+      className="z-50  flex flex-col items-start justify-start gap-4 rounded-xl border-neutral-200 border-neutral-900  p-9 "
     >
       <div className={`rounded-xl ${colorGradientArea()} p-1`}>
         {emojiArea()}
@@ -94,7 +96,7 @@ function AreaQuestion({ name, id }: AreaQuestionProps) {
 
       <div className="flex w-full flex-col items-center justify-center  gap-2">
         {question.map((q, index) => (
-          <InputQuestion index={index} />
+          <InputQuestion index={index} areaId={id}/>
         ))}
         {question.length < 5 && (
           <div className="w-full ">
