@@ -1,26 +1,23 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 
-export default async function Journal(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  const { title, summary } = req.body;
+export default async function Area(req: NextApiRequest, res: NextApiResponse) {
+  const { name } = req.body;
 
   const prisma = new PrismaClient();
 
   switch (req.method) {
     case "POST":
       try {
-        const newJournal = await prisma.journal.create({
+        const newJournal = await prisma.area.create({
           data: {
-            title: title,
-            summary: summary,
+            name,
           },
         });
 
         res.status(200).json(newJournal);
       } catch (error) {
+        res.status(500).json({ message: error });
         console.log(error);
       }
       break;

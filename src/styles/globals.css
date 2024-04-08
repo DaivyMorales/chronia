@@ -4,7 +4,7 @@
 
 
 :root {
-    background-color: black;
+    background-color: #0A0A0A;
     color: white;
 }
 
@@ -30,7 +30,7 @@ p{
 }
 
 .next-button {
-    @apply bg-neutral-600 text-white font-medium text-[12px] px-3 py-[5px] border-[1px] border-neutral-400 rounded-[10px] flex gap-2 items-center justify-center;
+    @apply bg-white text-white font-semibold text-black text-[14px] px-6 py-2  rounded-full flex gap-2 items-center justify-center hover:bg-neutral-200;
 }
 
 /* INPUT */

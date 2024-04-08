@@ -48,8 +48,8 @@ function InputQuestion({ index }: InputQuestionProps) {
         rows={1}
         onMouseEnter={() => setIsFocused(true)}
         onMouseLeave={() => setIsFocused(false)}
-        className={` ${isFocused ? "" : "text-neutral-500"} textarea-question w-[363px] resize-none whitespace-normal rounded-lg  bg-transparent px-4 py-2 text-sm font-normal text-neutral-200 placeholder:text-neutral-500`}
-        placeholder="Am I more confident?"
+        className={` ${isFocused ? "" : "text-neutral-300"} textarea-question w-[363px] resize-none whitespace-normal rounded-lg  bg-neutral-900 px-4 py-2 text-sm font-normal text-neutral-200 placeholder:text-neutral-500`}
+        placeholder="Write a question here"
       />
     </motion.div>
   );

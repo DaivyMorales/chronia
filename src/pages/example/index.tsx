@@ -8,68 +8,58 @@ import {
   TiGroupOutline,
   TiChartBarOutline,
 } from "react-icons/ti";
-
-interface QuestionProps {
-  id: number;
-  question: string;
-}
+import { api } from "@/utils/api";
+import { createCaller } from "@/server/api/root";
+import { useFormik } from "formik";
+import axios from "axios";
+import AreaQuestion from "../components/AreaQuestion";
 
 function Example() {
-  const [question, setQuestion] = useState<QuestionProps[]>([
-    {
-      id: 1,
-      question: "",
+  const useQuery = api.area.getAreas.useQuery();
+  // const trpc = createCaller();
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
     },
-  ]);
+    onSubmit: async (values) => {
+      // const response = await trpc.area.createArea.mutate({
+      //   name: values.name,
+      // });
+      // console.log(response);
+    },
+  });
 
   return (
     <div className="relative flex h-screen w-full flex-col items-center justify-between gap-3 p-3">
       {/* <div className="absolute bg-rose-600 w-screen h-[100px] blur-[90px]"/> */}
       {/* <h2 className="z-50">Chronia</h2> */}
-      <h2>Your goals</h2>
+      <h3 className="text-2xl">Ask yourself</h3>
+      <p className="text-lg font-medium text-neutral-400">
+        What would you like to ask 3 month old Deivy in this area of life?
+      </p>
       {/* <textarea name="" id="" cols={60} rows={30}></textarea>
       <button>Yes!</button> */}
 
+      {/* <form onSubmit={formik.handleSubmit}>
+        <input type="text" onChange={formik.handleChange} name="name" />
+        <button>send</button>
+      </form> */}
+
+      {/* <div>
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>Error: {error.message}</div>
+        ) : (
+          <ul>{data?.map((area) => <li key={area.id}>{area.name}</li>)}</ul>
+        )}
+      </div> */}
+
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-1">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="b] z-50  flex flex-col items-start justify-start gap-4 rounded-xl border-neutral-200 border-neutral-900  p-9 "
-        >
-          <div className="rounded-xl bg-gradient-to-r from-pink-600 to-rose-700 p-1">
-            <TiHeartOutline size={30} />
-          </div>
-          <h3 className="flex items-center gap-1 font-bold text-white">
-            Love / Relationships
-          </h3>
-
-          <div className="flex w-full flex-col items-center justify-center  gap-2">
-            {question.map((q, index) => (
-              <InputQuestion index={index} />
-            ))}
-            {question.length < 5 && (
-              <div className="w-full ">
-                <motion.button
-                whileHover={{scale: 1.1}}
-                onClick={() => {
-                  setQuestion([
-                    ...question,
-                    {
-                      id: 0,
-                      question: "",
-                    },
-                  ]);
-                }}
-                className="rounded-full border-[1px] border-neutral-500 p-1 text-[8px] text-neutral-400 hover:border-neutral-200 hover:text-neutral-200"
-              >
-                <HiPlus/>
-              </motion.button>
-              </div>
-            )}
-          </div>
-        </motion.div>
-
+        {useQuery.data?.map((area) => (
+          <AreaQuestion name={area.name} key={area.id} id={area.id} />
+        ))}
         {/* <div className="z-50 flex  flex-col items-start justify-start gap-4 rounded-xl border-[1px] border-neutral-200 border-neutral-900 bg-[#170F23] p-9 ">
           <div className="rounded-xl bg-gradient-to-r from-sky-600 to-blue-700 p-1">
             <TiGroupOutline size={30} />
@@ -140,12 +130,7 @@ function Example() {
         <h4>What is your goal in 6 months?</h4>
         <input type="text" className="text-xs" />
       </div> */}
-      <motion.button
-        initial={{ scale: 1 }}
-        whileHover={{ scale: 1.25 }}
-        whileTap={{ scale: 0.7 }}
-        className="next-button"
-      >
+      <motion.button className="next-button">
         Continue <FaArrowRight />
       </motion.button>
     </div>
