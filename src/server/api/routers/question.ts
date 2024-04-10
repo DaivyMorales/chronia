@@ -4,7 +4,7 @@ import {
   protectedProcedure,
 } from "@/server/api/trpc";
 
-export const questionArea = createTRPCRouter({
+export const questionRouter = createTRPCRouter({
   createQuestion: protectedProcedure
     .input(
       z.object({

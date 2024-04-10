@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { api } from "@/utils/api";
-import AreaQuestion from "../components/AreaQuestion";
+import AreaQuestion from "../../components/AreaQuestion";
 
 function Example() {
   const [currectIndex, setCurrectIndex] = useState(0);
