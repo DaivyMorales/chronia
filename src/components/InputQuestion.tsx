@@ -6,18 +6,36 @@ interface InputQuestionProps {
   index: number;
   areaId: string;
   setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void;
+  addQuestion: (areaId: string) => void;
 }
 
-function InputQuestion({ index, areaId, setFieldValue }: InputQuestionProps) {
-  const [value, setValue] = useState("");
+function InputQuestion({
+  index,
+  areaId,
+  setFieldValue,
+  addQuestion,
+}: InputQuestionProps) {
   const [isFocused, setIsFocused] = useState(false);
+  const [questionId, setQuestionId] = useState("");
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+  const generateRandomId = () => {
+    return `id-${Math.random().toString(36).substr(2, 9)}`;
+  };
+
+  useEffect(() => {
+    // addQuestion(areaId);
+    const questionId = generateRandomId();
+    setQuestionId(questionId);
+  }, []);
+
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setValue(e.target.value);
-    setFieldValue("question_description", e.target.value);
-    setFieldValue("areaId", areaId);
+    const newValue = e.target.value;
+    addQuestion(areaId)
+    setFieldValue(`questions[${questionId}].question_description`, newValue);
+    setFieldValue(`questions[${questionId}].areaId`, areaId);
+    setFieldValue(`questions[${questionId}].questionId`, questionId);
     autoAdjustHeight(e);
   };
 
@@ -45,9 +63,8 @@ function InputQuestion({ index, areaId, setFieldValue }: InputQuestionProps) {
         {index + 1}.
       </p>
       <textarea
-        name="question_description"
+        name={`questions[${questionId}].question_description`}
         ref={textareaRef}
-        value={value}
         onChange={handleChange}
         onKeyDown={handleKeyPress}
         rows={1}

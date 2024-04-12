@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { api } from "@/utils/api";
@@ -7,21 +7,33 @@ import { useFormik } from "formik";
 
 function Example() {
   const useQuery = api.area.getAreas.useQuery();
-  const mutation = api.question.createQuestion.useMutation();
 
   const formik = useFormik({
     initialValues: {
-      question_description: "",
-      areaId: "",
+      questions: [],
     },
     onSubmit: async (values) => {
-      const response = await mutation.mutateAsync({
-        question_description: values.question_description,
-        areaId: values.areaId,
-      });
-      console.log(values);
+      // values.questions.map(async (question) => {
+      //   const response = await mutation.mutateAsync({
+      //     question_description: question.question_description,
+      //     areaId: question.areaId,
+      //   });
+      //   console.log(response);
+      // });
+
+      console.log("onSubmit", values);
     },
   });
+
+  const addQuestion = (areaId: string) => {
+    formik.setFieldValue("questions", [
+      ...formik.values.questions,
+      {
+        question_description: "",
+        areaId,
+      },
+    ]);
+  };
 
   return (
     <form
@@ -42,6 +54,7 @@ function Example() {
             key={area.id}
             id={area.id}
             setFieldValue={formik.setFieldValue}
+            addQuestion={addQuestion}
           />
         ))}
       </div>

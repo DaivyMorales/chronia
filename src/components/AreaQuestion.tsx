@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import InputQuestion from "./InputQuestion";
 import { HiPlus } from "react-icons/hi";
@@ -12,22 +12,26 @@ import {
   TiChartLineOutline,
 } from "react-icons/ti";
 
-interface QuestionProps {
-  id: number;
-  question: string;
+interface InputQuestionProps {
+  question: boolean;
 }
 
 interface AreaQuestionProps {
   name: string;
   id: string;
   setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void;
+  addQuestion: (areaId: string) => void;
 }
 
-function AreaQuestion({ name, id, setFieldValue }: AreaQuestionProps) {
-  const [question, setQuestion] = useState<QuestionProps[]>([
+function AreaQuestion({
+  name,
+  id,
+  setFieldValue,
+  addQuestion,
+}: AreaQuestionProps) {
+  const [inputQuestion, setInputQuestion] = useState<InputQuestionProps[]>([
     {
-      id: 1,
-      question: "",
+      question: true,
     },
   ]);
 
@@ -95,23 +99,26 @@ function AreaQuestion({ name, id, setFieldValue }: AreaQuestionProps) {
       <h3 className="flex items-center gap-1 font-bold text-white">{name}</h3>
 
       <div className="flex w-full flex-col items-center justify-center  gap-2">
-        {question.map((q, index) => (
+        {inputQuestion.map((q, index) => (
           <InputQuestion
+            key={index}
             index={index}
             areaId={id}
             setFieldValue={setFieldValue}
+            addQuestion={addQuestion}
           />
         ))}
-        {question.length < 5 && (
+        {inputQuestion.length < 5 && (
           <div className="w-full ">
             <motion.button
+              type="button"
               whileHover={{ scale: 1.1 }}
               onClick={() => {
-                setQuestion([
-                  ...question,
+                addQuestion(id);
+                setInputQuestion([
+                  ...inputQuestion,
                   {
-                    id: 0,
-                    question: "",
+                    question: true,
                   },
                 ]);
               }}
