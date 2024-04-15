@@ -7,9 +7,9 @@ import { useFormik } from "formik";
 import { useState } from "react";
 
 export interface Questions {
-  questionId: string;
+  questionId?: string;
   questionDescription: string;
-  areaId: string;
+  areaId?: string;
 }
 
 function Example() {
@@ -26,7 +26,7 @@ function Example() {
       questions.map(async (question: Questions) => {
         await mutation.mutateAsync({
           question_description: question.questionDescription,
-          areaId: question.areaId,
+          areaId: question.areaId || "",
         });
       });
     },

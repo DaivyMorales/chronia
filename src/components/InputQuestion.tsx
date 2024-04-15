@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useFormik, FormikErrors } from "formik";
 import { Questions } from "@/pages/example";
 
 interface InputQuestionProps {
@@ -27,29 +26,22 @@ function InputQuestion({
   };
 
   useEffect(() => {
-    // addQuestion(areaId);
     const questionId = generateRandomId();
     setQuestionId(questionId);
   }, []);
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value;
-    // // addQuestion(areaId);
-    // setFieldValue(`questions.question_description`, newValue);
-    // setFieldValue(`questions.areaId`, areaId);
-    // // setFieldValue(`questions.questionId`, questionId);
     setQuestionDescription(newValue);
     autoAdjustHeight(e);
   };
 
   const handleSave = () => {
-    // Check if the question already exists
     const existingQuestionIndex = questions.findIndex(
       (q) => q.questionId === questionId,
     );
 
     if (existingQuestionIndex !== -1) {
-      // If the question already exists, update it
       const updatedQuestions = [...questions];
       updatedQuestions[existingQuestionIndex] = {
         ...updatedQuestions[existingQuestionIndex],
@@ -57,19 +49,15 @@ function InputQuestion({
       };
       setQuestions(updatedQuestions);
     } else {
-      // If the question doesn't exist, add it
       setQuestions([
         ...questions,
         {
-          questionId: questionId || "", // Ensure questionId has a value
+          questionId: questionId!,
           questionDescription: questionDescription,
-          areaId: areaId || "", // Ensure areaId has a value
+          areaId: areaId!,
         },
       ]);
     }
-
-    // Clear the question description
-    setQuestionDescription("");
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
