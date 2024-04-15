@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import InputQuestion from "./InputQuestion";
 import { HiPlus } from "react-icons/hi";
-import { useFormik } from "formik";
 import {
   TiHeartOutline,
   TiGroupOutline,
@@ -11,6 +10,7 @@ import {
   TiFeather,
   TiChartLineOutline,
 } from "react-icons/ti";
+import { Questions } from "@/pages/example";
 
 interface InputQuestionProps {
   question: boolean;
@@ -19,15 +19,17 @@ interface InputQuestionProps {
 interface AreaQuestionProps {
   name: string;
   id: string;
-  setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void;
   addQuestion: (areaId: string) => void;
+  setQuestions: React.Dispatch<React.SetStateAction<Questions[]>>;
+  questions: Questions[];
 }
 
 function AreaQuestion({
   name,
   id,
-  setFieldValue,
   addQuestion,
+  setQuestions,
+  questions,
 }: AreaQuestionProps) {
   const [inputQuestion, setInputQuestion] = useState<InputQuestionProps[]>([
     {
@@ -104,8 +106,8 @@ function AreaQuestion({
             key={index}
             index={index}
             areaId={id}
-            setFieldValue={setFieldValue}
-            addQuestion={addQuestion}
+            setQuestions={setQuestions}
+            questions={questions}
           />
         ))}
         {inputQuestion.length < 5 && (

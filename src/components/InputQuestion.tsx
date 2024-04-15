@@ -1,22 +1,24 @@
 import React, { ChangeEvent, useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useFormik, FormikErrors } from "formik";
+import { Questions } from "@/pages/example";
 
 interface InputQuestionProps {
   index: number;
   areaId: string;
-  setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void;
-  addQuestion: (areaId: string) => void;
+  setQuestions: React.Dispatch<React.SetStateAction<Questions[]>>;
+  questions: Questions[];
 }
 
 function InputQuestion({
   index,
   areaId,
-  setFieldValue,
-  addQuestion,
+  setQuestions,
+  questions,
 }: InputQuestionProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [questionId, setQuestionId] = useState("");
+  const [questionDescription, setQuestionDescription] = useState("");
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -32,11 +34,42 @@ function InputQuestion({
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value;
-    addQuestion(areaId)
-    setFieldValue(`questions[${questionId}].question_description`, newValue);
-    setFieldValue(`questions[${questionId}].areaId`, areaId);
-    setFieldValue(`questions[${questionId}].questionId`, questionId);
+    // // addQuestion(areaId);
+    // setFieldValue(`questions.question_description`, newValue);
+    // setFieldValue(`questions.areaId`, areaId);
+    // // setFieldValue(`questions.questionId`, questionId);
+    setQuestionDescription(newValue);
     autoAdjustHeight(e);
+  };
+
+  const handleSave = () => {
+    // Check if the question already exists
+    const existingQuestionIndex = questions.findIndex(
+      (q) => q.questionId === questionId,
+    );
+
+    if (existingQuestionIndex !== -1) {
+      // If the question already exists, update it
+      const updatedQuestions = [...questions];
+      updatedQuestions[existingQuestionIndex] = {
+        ...updatedQuestions[existingQuestionIndex],
+        questionDescription: questionDescription,
+      };
+      setQuestions(updatedQuestions);
+    } else {
+      // If the question doesn't exist, add it
+      setQuestions([
+        ...questions,
+        {
+          questionId: questionId || "", // Ensure questionId has a value
+          questionDescription: questionDescription,
+          areaId: areaId || "", // Ensure areaId has a value
+        },
+      ]);
+    }
+
+    // Clear the question description
+    setQuestionDescription("");
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -67,6 +100,7 @@ function InputQuestion({
         ref={textareaRef}
         onChange={handleChange}
         onKeyDown={handleKeyPress}
+        onBlur={handleSave}
         rows={1}
         onMouseEnter={() => setIsFocused(true)}
         onMouseLeave={() => setIsFocused(false)}

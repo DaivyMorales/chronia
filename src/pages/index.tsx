@@ -11,6 +11,8 @@ export default function Home() {
 
   const router = useRouter();
 
+  console.log(session?.user.email)
+
   return (
     <>
       <Head>
@@ -20,14 +22,15 @@ export default function Home() {
       </Head>
       <main className=" flex min-h-screen flex-col items-center justify-center ">
         <h1>{session?.user.email}</h1>
-        <button
-          onClick={() => {
-            signOut();
-          }}
-        >
-          Logout
-        </button>
-     
+        {status === "authenticated" && (
+          <button
+            onClick={() => {
+              signOut();
+            }}
+          >
+            Logout
+          </button>
+        )}
       </main>
     </>
   );

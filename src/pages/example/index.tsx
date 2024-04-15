@@ -4,24 +4,31 @@ import { motion } from "framer-motion";
 import { api } from "@/utils/api";
 import AreaQuestion from "../../components/AreaQuestion";
 import { useFormik } from "formik";
+import { useState } from "react";
+
+export interface Questions {
+  questionId: string;
+  questionDescription: string;
+  areaId: string;
+}
 
 function Example() {
   const useQuery = api.area.getAreas.useQuery();
+  const mutation = api.question.createQuestion.useMutation();
+
+  const [questions, setQuestions] = useState<Questions[]>([]);
 
   const formik = useFormik({
     initialValues: {
       questions: [],
     },
-    onSubmit: async (values) => {
-      // values.questions.map(async (question) => {
-      //   const response = await mutation.mutateAsync({
-      //     question_description: question.question_description,
-      //     areaId: question.areaId,
-      //   });
-      //   console.log(response);
-      // });
-
-      console.log("onSubmit", values);
+    onSubmit: async () => {
+      questions.map(async (question: Questions) => {
+        await mutation.mutateAsync({
+          question_description: question.questionDescription,
+          areaId: question.areaId,
+        });
+      });
     },
   });
 
@@ -53,7 +60,8 @@ function Example() {
             name={area.name}
             key={area.id}
             id={area.id}
-            setFieldValue={formik.setFieldValue}
+            setQuestions={setQuestions}
+            questions={questions}
             addQuestion={addQuestion}
           />
         ))}
