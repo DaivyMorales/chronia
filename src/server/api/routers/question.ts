@@ -1,8 +1,5 @@
 import { z } from "zod";
-import {
-  createTRPCRouter,
-  protectedProcedure,
-} from "@/server/api/trpc";
+import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 
 export const questionRouter = createTRPCRouter({
   createQuestion: protectedProcedure
@@ -10,6 +7,7 @@ export const questionRouter = createTRPCRouter({
       z.object({
         areaId: z.string(),
         question_description: z.string(),
+        userId: z.string(),
       }),
     )
     .mutation(({ ctx, input }) => {
@@ -17,6 +15,7 @@ export const questionRouter = createTRPCRouter({
         data: {
           question_description: input.question_description,
           areaId: input.areaId,
+          userId: input.userId,
         },
       });
     }),

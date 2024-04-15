@@ -5,6 +5,7 @@ import { api } from "@/utils/api";
 import AreaQuestion from "../../components/AreaQuestion";
 import { useFormik } from "formik";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 
 export interface Questions {
   questionId?: string;
@@ -13,6 +14,8 @@ export interface Questions {
 }
 
 function Example() {
+  const { data: session } = useSession();
+
   const useQuery = api.area.getAreas.useQuery();
   const mutation = api.question.createQuestion.useMutation();
 
@@ -23,12 +26,15 @@ function Example() {
       questions: [],
     },
     onSubmit: async () => {
-      questions.map(async (question: Questions) => {
-        await mutation.mutateAsync({
-          question_description: question.questionDescription,
-          areaId: question.areaId || "",
+      if (session?.user) {
+        questions.map(async (question: Questions) => {
+          await mutation.mutateAsync({
+            question_description: question.questionDescription,
+            areaId: question.areaId || "",
+            userId: session.user.id,
+          });
         });
-      });
+      }
     },
   });
 
@@ -45,12 +51,13 @@ function Example() {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="relative flex h-screen w-full flex-col items-center justify-between gap-3 p-3"
+      className="relative flex min-h-screen w-full flex-col items-center justify-between gap-3 py-10 px-3"
     >
-      <div className="flex flex-col items-center justify-center gap-1">
+      <div className="absolute w-[700px] h-[700px] rounded-full -top-[550px] blur-[90px] bg-purple-900 opacity-60"/>
+      <div className="z-10 flex flex-col items-start justify-start gap-1">
         <h3 className="text-2xl">Ask yourself</h3>
-        <p className="text-lg font-medium text-neutral-400">
-          What would you like to ask 3 month old Deivy in this area of life?
+        <p className="text-sm font-medium text-neutral-400">
+          What would you like to ask 3 month old {session?.user.name} in this area of life?
         </p>
       </div>
 
