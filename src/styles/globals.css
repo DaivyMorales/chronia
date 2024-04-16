@@ -2,44 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-    background-color: #05010D;
-    color: white;
+  background-color: #fffef5;
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  color: black;
 }
 
 /* TEXT */
 h2 {
-    @apply text-3xl font-medium;
+  @apply text-3xl  font-bold;
 }
 
-h3{ 
-    @apply text-xl font-bold;
+h3 {
+  @apply  text-xl font-bold;
 }
 
 h4 {
-    @apply text-sm font-bold;
+  @apply text-sm font-bold;
 }
 
-p{
-    @apply text-[13px] font-medium; 
+p {
+  @apply text-[13px] font-medium;
 }
 /* BUTTON */
 .signin-button {
-    @apply py-2 px-16 border-[1px] bg-neutral-50 flex items-center justify-center gap-2 rounded-[6px] text-sm font-semibold text-neutral-800;
+  @apply flex items-center justify-center gap-2 rounded-[6px] border-[1px] bg-neutral-50 px-16 py-2 text-sm font-semibold text-neutral-800;
 }
 
 .next-button {
-    @apply bg-white text-white font-semibold text-black text-[14px] px-6 py-2  rounded-full flex gap-2 items-center justify-center hover:bg-neutral-200;
+  @apply flex items-center justify-center gap-2 rounded-lg bg-black px-6  py-2 text-[14px] font-semibold text-black text-white hover:bg-neutral-800;
 }
 
 /* INPUT */
 
-
-
-
 textarea:focus {
-    outline: none;
+  outline: none;
 }
 /* .question-textarea {
     @apply ;

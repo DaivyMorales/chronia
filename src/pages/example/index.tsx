@@ -53,11 +53,12 @@ function Example() {
       onSubmit={formik.handleSubmit}
       className="relative flex min-h-screen w-full flex-col items-center justify-between gap-3 py-10 px-3"
     >
-      <div className="absolute w-[700px] h-[700px] rounded-full -top-[550px] blur-[90px] bg-purple-900 opacity-60"/>
       <div className="z-10 flex flex-col items-start justify-start gap-1">
-        <h3 className="text-2xl">Ask yourself</h3>
+        <h2 className=" ">Ask yourself</h2>
         <p className="text-sm font-medium text-neutral-400">
-          What would you like to ask 3 month old {session?.user.name} in this area of life?
+          What would you like to ask 3 month old {session?.user.name} in these life areas?
+<br />
+          The AI will answer those your questions
         </p>
       </div>
 

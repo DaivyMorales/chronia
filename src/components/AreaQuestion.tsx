@@ -40,22 +40,22 @@ function AreaQuestion({
   const emojiArea = () => {
     switch (name) {
       case "Love / Relationships":
-        return <TiHeartOutline size={30} />;
+        return <TiHeartOutline size={20} color="white" />;
         break;
       case "Spirituality":
-        return <TiFeather size={30} />;
+        return <TiFeather size={20} color="white" />;
         break;
       case "Social life / Interactions":
-        return <TiGroupOutline size={30} />;
+        return <TiGroupOutline size={20} color="white" />;
         break;
       case "Health":
-        return <TiThermometer size={30} />;
+        return <TiThermometer size={20} color="white" />;
         break;
       case "Hobbies":
-        return <TiNotesOutline size={30} />;
+        return <TiNotesOutline size={20} color="white" />;
         break;
       case "Personal growth / Development":
-        return <TiChartLineOutline size={30} />;
+        return <TiChartLineOutline size={20} color="white" />;
         break;
 
       default:
@@ -66,22 +66,22 @@ function AreaQuestion({
   const colorGradientArea = () => {
     switch (name) {
       case "Love / Relationships":
-        return "bg-gradient-to-r from-pink-600 to-rose-700";
+        return "bg-pink-400 ";
         break;
       case "Spirituality":
-        return "bg-gradient-to-r from-cyan-600 to-green-700";
+        return "bg-cyan-400 ";
         break;
       case "Social life / Interactions":
-        return "bg-gradient-to-r from-sky-600 to-blue-700";
+        return "bg-sky-400 ";
         break;
       case "Health":
-        return "bg-gradient-to-r from-green-600 to-lime-700";
+        return "bg-green-400 ";
         break;
       case "Hobbies":
-        return "bg-gradient-to-r from-indigo-600 to-red-700";
+        return "bg-indigo-400 ";
         break;
       case "Personal growth / Development":
-        return "bg-gradient-to-r from-stone-600 to-neutral-700";
+        return "bg-stone-400 ";
         break;
 
       default:
@@ -90,15 +90,17 @@ function AreaQuestion({
   };
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6 }}
-      className="z-50  flex flex-col items-start justify-start gap-4 rounded-xl border-neutral-200 border-neutral-900  p-9 "
+      // initial={{ opacity: 0, x: -100, scale: 0.9 }}
+      // whileInView={{ opacity: 1, x: 0, scale: 1 }}
+      // transition={{ duration: 0.6 }}
+      className="z-50   flex flex-col items-start justify-start gap-4  border-neutral-200  p-9 "
     >
-      <div className={`rounded-xl ${colorGradientArea()} p-1`}>
-        {emojiArea()}
+      <div className="flex items-center gap-2">
+        <div className={`rounded-lg ${colorGradientArea()} p-1`}>
+          {emojiArea()}
+        </div>
+        <h3 className="flex items-center gap-1 font-bold text-black">{name}</h3>
       </div>
-      <h3 className="flex items-center gap-1 font-bold text-white">{name}</h3>
 
       <div className="flex w-full flex-col items-center justify-center  gap-2">
         {inputQuestion.map((q, index) => (

@@ -18,9 +18,9 @@ function Journal() {
   });
 
   return (
-    <div>
+    <div className="w-screen h-screen flex justify-center items-center">
       <form onSubmit={formik.handleSubmit}>
-        <div>
+        {/* <div>
           <label htmlFor="">title</label>
           <input
             type="text"
@@ -28,14 +28,16 @@ function Journal() {
             name="title"
             placeholder="My day with Juan"
           />
-        </div>
+        </div> */}
         <div>
-          <label htmlFor="">Summary</label>
+          {/* <label htmlFor="">Summary</label> */}
           <textarea
             name="summary"
             onChange={formik.handleChange}
             cols={30}
             rows={10}
+            className="textarea-question w-[363px] resize-none whitespace-normal rounded-lg  bg-transparent px-4 py-2 text-[13px] font-normal text-neutral-200 placeholder:text-neutral-500"
+            placeholder="Tell us what did you do this day? "
           ></textarea>
         </div>
         <button
