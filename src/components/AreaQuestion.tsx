@@ -93,7 +93,7 @@ function AreaQuestion({
       // initial={{ opacity: 0, x: -100, scale: 0.9 }}
       // whileInView={{ opacity: 1, x: 0, scale: 1 }}
       // transition={{ duration: 0.6 }}
-      className="z-50   flex flex-col items-start justify-start gap-4  border-neutral-200  p-9 "
+      className="z-50 flex flex-col items-start justify-start gap-4  border-neutral-200 py-9 w-full"
     >
       <div className="flex items-center gap-2">
         <div className={`rounded-lg ${colorGradientArea()} p-1`}>

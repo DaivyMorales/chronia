@@ -51,18 +51,19 @@ function Example() {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="relative flex min-h-screen w-full flex-col items-center justify-between gap-3 py-10 px-3"
+      className="relative flex min-h-screen w-full flex-col items-start justify-between gap-3  px-3 py-10"
     >
       <div className="z-10 flex flex-col items-start justify-start gap-1">
         <h2 className=" ">Ask yourself</h2>
         <p className="text-sm font-medium text-neutral-400">
-          What would you like to ask 3 month old {session?.user.name} in these life areas?
-<br />
+          What would you like to ask 3 month old {session?.user.name} in these
+          life areas?
+          <br />
           The AI will answer those your questions
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-1">
+      <div className="flex flex-col justify-start items-start gap-5 w-full">
         {useQuery.data?.map((area) => (
           <AreaQuestion
             name={area.name}

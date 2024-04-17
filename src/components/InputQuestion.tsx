@@ -76,10 +76,10 @@ function InputQuestion({
     <motion.div
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
-      className="flex w-full items-center gap-2"
+      className="flex w-full justify-center items-center gap-2"
     >
       <p
-        className={`${isFocused ? "text-neutral-300" : ""} font-semibold text-neutral-400`}
+        className={`${isFocused ? "text-neutral-300" : ""} font-semibold text-neutral-400 flex`}
       >
         {index + 1}.
       </p>
@@ -92,7 +92,7 @@ function InputQuestion({
         rows={1}
         onMouseEnter={() => setIsFocused(true)}
         onMouseLeave={() => setIsFocused(false)}
-        className={`  textarea-question w-[363px] resize-none whitespace-normal rounded-lg  bg-transparent px-4 py-2 text-[13px] font-normal text-black placeholder:text-neutral-500`}
+        className={`  textarea-question w-full resize-none whitespace-normal rounded-lg  bg-transparent px-4 py-2 text-[13px] font-normal text-black placeholder:text-neutral-500`}
         placeholder="Write a question here"
       />
     </motion.div>
