@@ -6,6 +6,7 @@ import { DM_Sans, Bricolage_Grotesque } from "next/font/google";
 import { api } from "@/utils/api";
 
 import "@/styles/globals.css";
+import Navbar from "@/components/Navbar";
 
 const dm_sans = DM_Sans({
   subsets: ["latin"],
@@ -24,7 +25,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <main className={`${bricolage.className}`}>
-        <Component {...pageProps} />
+        <Navbar>
+          <Component {...pageProps} />
+        </Navbar>
       </main>
     </SessionProvider>
   );
