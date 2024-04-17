@@ -10,12 +10,17 @@
 }
 
 /* TEXT */
+
+h1 {
+  @apply text-5xl font-black;
+}
+
 h2 {
   @apply text-3xl  font-bold;
 }
 
 h3 {
-  @apply  text-xl font-bold;
+  @apply text-xl font-bold;
 }
 
 h4 {
@@ -27,7 +32,7 @@ p {
 }
 /* BUTTON */
 .signin-button {
-  @apply flex items-center justify-center gap-2 rounded-[6px] border-[1px] bg-neutral-50 px-16 py-2 text-sm font-semibold text-neutral-800;
+  @apply flex items-center justify-center gap-2 rounded-[6px] border-[1px] border-neutral-400 bg-transparent px-16 py-2 text-sm font-semibold text-neutral-800;
 }
 
 .next-button {
