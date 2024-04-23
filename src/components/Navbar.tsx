@@ -59,7 +59,7 @@ function Navbar({ children }: NavbarProps) {
           ) : status === "loading" ? (
             ""
           ) : (
-            <p onClick={() => signIn("google")}>Sign in</p>
+            <button className="bg-black text-[12px] text-white font-medium px-5 py-1 rounded-[7px] text-sm hover:bg-neutral-800" onClick={() => signIn("google")}>Sign in</button>
           )}
         </nav>
       </header>

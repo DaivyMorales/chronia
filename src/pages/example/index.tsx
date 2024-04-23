@@ -51,7 +51,7 @@ function Example() {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="relative flex min-h-screen w-full flex-col items-start justify-between gap-3  px-3 py-10"
+      className="relative flex min-h-screen w-full flex-col items-start justify-between gap-3  px-5 py-10"
     >
       <div className="z-10 flex flex-col items-start justify-start gap-1">
         <h2 className=" ">Ask yourself</h2>
