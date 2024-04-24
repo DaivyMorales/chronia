@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Virgil";
+  src: url("https://excalidraw.com/Virgil.woff2");
+}
+@font-face {
+  font-family: "Cascadia";
+  src: url("https://excalidraw.com/Cascadia.woff2");
+}
+@font-face {
+  font-family: "Assistant";
+  src: url("https://excalidraw.com/Assistant-Regular.woff2");
+}
+
+
 :root {
   background-color: #fffef5;
   background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
@@ -12,7 +26,7 @@
 /* TEXT */
 
 h1 {
-  @apply text-5xl font-black;
+  @apply text-6xl font-black;
 }
 
 h2 {
@@ -37,6 +51,11 @@ p {
 
 .next-button {
   @apply flex items-center justify-center gap-2 rounded-lg bg-black px-6  py-2 text-[14px] font-semibold text-black text-white hover:bg-neutral-800;
+}
+
+.input-example {
+  outline: none;
+  background-color: transparent;
 }
 
 /* INPUT */
