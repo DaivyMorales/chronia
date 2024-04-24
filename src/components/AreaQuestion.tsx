@@ -40,22 +40,22 @@ function AreaQuestion({
   const emojiArea = () => {
     switch (name) {
       case "Love / Relationships":
-        return <TiHeartOutline size={20} color="white" />;
+        return "❤️";
         break;
       case "Spirituality":
-        return <TiFeather size={20} color="white" />;
+        return "🧘🏼‍♀️";
         break;
       case "Social life / Interactions":
-        return <TiGroupOutline size={20} color="white" />;
+        return "🌎";
         break;
       case "Health":
-        return <TiThermometer size={20} color="white" />;
+        return "👨🏼‍⚕️";
         break;
       case "Hobbies":
-        return <TiNotesOutline size={20} color="white" />;
+        return "🎮";
         break;
       case "Personal growth / Development":
-        return <TiChartLineOutline size={20} color="white" />;
+        return "📈";
         break;
 
       default:
@@ -66,22 +66,22 @@ function AreaQuestion({
   const colorGradientArea = () => {
     switch (name) {
       case "Love / Relationships":
-        return "bg-pink-400 ";
+        return "bg-pink-200 ";
         break;
       case "Spirituality":
-        return "bg-cyan-400 ";
+        return "bg-cyan-100 ";
         break;
       case "Social life / Interactions":
-        return "bg-sky-400 ";
+        return "bg-sky-100 ";
         break;
       case "Health":
-        return "bg-green-400 ";
+        return "bg-green-100 ";
         break;
       case "Hobbies":
-        return "bg-indigo-400 ";
+        return "bg-indigo-100 ";
         break;
       case "Personal growth / Development":
-        return "bg-stone-400 ";
+        return "bg-stone-100 ";
         break;
 
       default:
@@ -93,10 +93,12 @@ function AreaQuestion({
       // initial={{ opacity: 0, x: -100, scale: 0.9 }}
       // whileInView={{ opacity: 1, x: 0, scale: 1 }}
       // transition={{ duration: 0.6 }}
-      className="z-50 flex flex-col items-start justify-start gap-4  border-neutral-200 py-9 w-full"
+      className="z-50 flex w-full flex-col items-start justify-start  gap-4 border-neutral-200 py-9"
     >
       <div className="flex items-center gap-2">
-        <div className={`rounded-lg ${colorGradientArea()} p-1`}>
+        <div
+          className={`rounded-full ${colorGradientArea()} px-[10px] py-1 text-[23px]`}
+        >
           {emojiArea()}
         </div>
         <h3 className="flex items-center gap-1 font-bold text-black">{name}</h3>
