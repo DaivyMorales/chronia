@@ -3,6 +3,7 @@ import { useSession, signIn } from "next-auth/react";
 import TooltipProfile from "./TooltipProfile";
 import { useOpen } from "@/store/OpenStore";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 interface NavbarProps {
   children: ReactNode;
@@ -13,6 +14,8 @@ function Navbar({ children }: NavbarProps) {
   const tooltipProfileRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
   const { openTooltipProfile, setOpenTooltipProfile } = useOpen();
+
+  const router = useRouter();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -31,10 +34,13 @@ function Navbar({ children }: NavbarProps) {
   }, [openTooltipProfile, setOpenTooltipProfile]);
 
   return (
-    <main className="flex flex-col items-center justify-center " ref={mainRef}>
-      <header className="sticky top-0  z-50  flex w-full flex-col items-center justify-center px-2">
-        <nav className="flex h-[60px] w-full items-center  justify-between border-b-[1px] border-neutral-400 px-2 backdrop-blur backdrop-saturate-200 lg:w-[700px]">
-          <div className="flex items-center gap-1">
+    <main className="flex flex-col items-center justify-center min-h-screen" ref={mainRef}>
+      <header className="sticky top-0 z-50  flex w-full flex-col items-center justify-center px-2">
+        <nav className="flex h-[60px] w-full items-center  justify-between border-b-[1px] border-neutral-400 px-2 backdrop-blur backdrop-saturate-200 lg:w-[800px]">
+          <div
+            onClick={() => router.push("/")}
+            className="flex cursor-pointer items-center gap-1"
+          >
             <Image
               src="/chronia.png"
               alt="Chronia Logo"
@@ -76,7 +82,7 @@ function Navbar({ children }: NavbarProps) {
           )}
         </nav>
       </header>
-      <section className="z-20">{children}</section>
+      <section className="z-20 w-[800px]">{children}</section>
     </main>
   );
 }

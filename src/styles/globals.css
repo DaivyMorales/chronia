@@ -15,7 +15,6 @@
   src: url("https://excalidraw.com/Assistant-Regular.woff2");
 }
 
-
 :root {
   background-color: #fffef5;
   background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
@@ -50,10 +49,10 @@ p {
 }
 
 .next-button {
-  @apply flex items-center justify-center gap-2 rounded-lg bg-black px-6  py-2 text-[14px] font-semibold text-black text-white hover:bg-neutral-800;
+  @apply flex items-center justify-center gap-2 rounded-lg  px-6  py-2 text-[14px] font-semibold text-black text-white hover:bg-neutral-800;
 }
 
-.input-example {
+input {
   outline: none;
   background-color: transparent;
 }
@@ -67,16 +66,4 @@ textarea:focus {
     @apply ;
 } */
 
-/*
 
-
-
-{
-    area: physic,
-    questions: [
-        "Am i more confident?",
-        ""
-    ]
-}
-
-*/
