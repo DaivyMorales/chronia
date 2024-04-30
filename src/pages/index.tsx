@@ -75,7 +75,7 @@ export default function Home() {
               <img
                 src="/svgs/arrow-top.svg"
                 className=" h-[70px] w-[70px]"
-                alt="arrow svg"
+                alt="arrow svgs"
               />
               <img
                 src="/svgs/cure-yourself.png"
