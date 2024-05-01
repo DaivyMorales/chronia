@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export interface AnimatedTextProps {
-  text: string;
+  text: string | undefined | null;
 }
 
 const defaultAnimations = {
@@ -20,11 +20,13 @@ function AnimatedText({ text }: AnimatedTextProps) {
       initial="hidden"
       animate="visible"
       className="inline-block text-left text-[10px]"
-      transition={{ staggerChildren: 0.01,  duration: 0.05 }}
+      transition={{ staggerChildren: 0.01, duration: 0.05 }}
     >
-      {text.split("").map((char) => (
-        <motion.span variants={defaultAnimations}>{char}</motion.span>
-      ))}
+      {text
+        ?.split("")
+        .map((char) => (
+          <motion.span variants={defaultAnimations}>{char}</motion.span>
+        ))}
     </motion.span>
   );
 }
