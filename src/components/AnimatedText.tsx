@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 export interface AnimatedTextProps {
   text: string | undefined | null;
+  delay?: number | undefined;
 }
 
 const defaultAnimations = {
@@ -14,19 +15,19 @@ const defaultAnimations = {
   },
 };
 
-function AnimatedText({ text }: AnimatedTextProps) {
+function AnimatedText({ text, delay }: AnimatedTextProps) {
   return (
     <motion.span
       initial="hidden"
       animate="visible"
       className="inline-block text-left text-[10px]"
-      transition={{ staggerChildren: 0.01, duration: 0.05 }}
+      transition={{ staggerChildren: 0.01, duration: 0.05, delay: delay }}
     >
-      {text
-        ?.split("")
-        .map((char) => (
-          <motion.span variants={defaultAnimations}>{char}</motion.span>
-        ))}
+      {text?.split("").map((char) => (
+        <motion.span variants={defaultAnimations} transition={{ delay: delay }}>
+          {char}
+        </motion.span>
+      ))}
     </motion.span>
   );
 }

@@ -34,8 +34,8 @@ function Navbar({ children }: NavbarProps) {
   }, [openTooltipProfile, setOpenTooltipProfile]);
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen" ref={mainRef}>
-      <header className="sticky top-0 z-50  flex w-full flex-col items-center justify-center px-2">
+    <main className="flex flex-col items-center justify-center" ref={mainRef}>
+      <header className="sticky top-0 z-50  flex w-full flex-col items-center justify-center px-2 ">
         <nav className="flex h-[60px] w-full items-center  justify-between border-b-[1px] border-neutral-400 px-2 backdrop-blur backdrop-saturate-200 lg:w-[800px]">
           <div
             onClick={() => router.push("/")}
