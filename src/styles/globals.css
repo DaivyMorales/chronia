@@ -1,3 +1,69 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Virgil";
+  src: url("https://excalidraw.com/Virgil.woff2");
+}
+@font-face {
+  font-family: "Cascadia";
+  src: url("https://excalidraw.com/Cascadia.woff2");
+}
+@font-face {
+  font-family: "Assistant";
+  src: url("https://excalidraw.com/Assistant-Regular.woff2");
+}
+
+:root {
+  background-color: #fffef5;
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  color: black;
+}
+
+/* TEXT */
+
+h1 {
+  @apply text-6xl font-black;
+}
+
+h2 {
+  @apply text-3xl  font-bold;
+}
+
+h3 {
+  @apply text-xl font-bold;
+}
+
+h4 {
+  @apply text-sm font-bold;
+}
+
+p {
+  @apply text-[13px] font-medium;
+}
+/* BUTTON */
+.signin-button {
+  @apply flex items-center justify-center gap-2 rounded-[6px] border-[1px] border-neutral-400 bg-transparent px-16 py-2 text-sm font-semibold text-neutral-800;
+}
+
+.next-button {
+  @apply flex items-center justify-center gap-2 rounded-lg  px-6  py-2 text-[14px] font-semibold text-black text-white hover:bg-neutral-800;
+}
+
+input {
+  outline: none;
+  background-color: transparent;
+}
+
+/* INPUT */
+
+textarea:focus {
+  outline: none;
+}
+/* .question-textarea {
+    @apply ;
+} */
+
+
